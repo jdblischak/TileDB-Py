@@ -57,6 +57,9 @@ jobs:
       - name: Print env
         run: printenv
 
+      - name: error
+        run: exit 1
+
       # Remove after upstream PR fully-deployed:
       # - https://github.com/actions/runner-images/pull/7125
       - name: "Install homebrew dependencies"

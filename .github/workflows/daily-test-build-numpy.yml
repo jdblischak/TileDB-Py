@@ -6,6 +6,7 @@ on:
   schedule:
     # runs every day at 5:00 UTC (1:00AM EST / Midnight CST)
     - cron: "0 5 * * *"
+  workflow_dispatch:
 
 jobs:
   test:
@@ -51,6 +52,9 @@ jobs:
 
       - name: Print env
         run: printenv
+
+      - name: error
+        run: exit 1
 
       # Remove after upstream PR fully-deployed:
       # - https://github.com/actions/runner-images/pull/7125
