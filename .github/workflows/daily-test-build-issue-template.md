@@ -1,6 +1,5 @@
 ---
 title: Nightly GitHub Actions Build Fail
-assignees: nguyenv, ihnorton
 labels: bug
 ---
 
