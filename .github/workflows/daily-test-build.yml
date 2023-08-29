@@ -34,15 +34,15 @@ jobs:
         os: [ubuntu-latest, macos-11, windows-latest]
         libtiledb_version: ["dev", "release-2.16"]
         uninstall_pandas: [true, false]
-      fail-fast: false
+      fail-fast: true
 
-    permissions:
-      issues: write
     env:
       TILEDB_VERSION: ${{ matrix.libtiledb_version }}
       MACOSX_DEPLOYMENT_TARGET: "10.15"
 
     steps:
+      - name: error
+        run: exit 1
       - name: Set up Python
         uses: actions/setup-python@v2
         with:

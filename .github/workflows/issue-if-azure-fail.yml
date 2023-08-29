@@ -1,11 +1,13 @@
 name: Create Issue if Build Fails on Azure
 
-on: [repository_dispatch]
+on: [repository_dispatch, workflow_dispatch]
 
 jobs:
   clean-branch:
     runs-on: ubuntu-latest
     steps:
+      - name: error
+        run: exit 1
       - uses: actions/checkout@v2
       - name: Get current date
         id: date

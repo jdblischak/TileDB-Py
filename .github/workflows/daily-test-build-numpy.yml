@@ -6,6 +6,7 @@ on:
   schedule:
     # runs every day at 5:00 UTC (1:00AM EST / Midnight CST)
     - cron: "0 5 * * *"
+  workflow_dispatch:
 
 jobs:
   test:
@@ -29,12 +30,14 @@ jobs:
             numpy-version: "1.17.3"
           - python-version: "3.7"
             numpy-version: "1.16.5"
-      fail-fast: false
+      fail-fast: true
     env:
       # 11.7 necessary due to: https://github.com/actions/setup-python/issues/682#issuecomment-1604261330
       #MACOSX_DEPLOYMENT_TARGET: "10.15"
       MACOSX_DEPLOYMENT_TARGET: ${{ matrix.os == 'macos-11' && contains(fromJson('["3.7", "3.8"]'), matrix.python-version) && '11.7' || '10.15' }}
     steps:
+      - name: error
+        run: exit 1
       - name: Checkout TileDB-Py `dev`
         uses: actions/checkout@v2
 
